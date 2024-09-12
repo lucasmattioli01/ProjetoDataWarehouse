@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de Dados</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Consulta de Dados</h1>
+    <form action="/consulta" method="post">
+        Nome: <input type="text" name="nome">
+        Idade: <input type="text" name="idade">
+        Cor Preferida: <input type="text" name="cor">
+        <button type="submit">Consultar</button>
+    </form>
+    <h2>Estatísticas:</h2>
+    <p>Total de pessoas: {{ total_pessoas }}</p>
+    <p>Número de pessoas por nome:</p>
+    <ul>
+        {% for nome, count in estatisticas['nomes'] %}
+        <li>{{ nome }}: {{ count }} pessoa(s)</li>
+        {% endfor %}
+    </ul>
+    <p>Idade média: {{ estatisticas['idade_media'] }}</p>
+    <p>Cor preferida mais comum: {{ estatisticas['cor_mais_comum'][0] }} ({{ estatisticas['cor_mais_comum'][1] }} pessoa(s))</p>
+    <h2>Resultados:</h2>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Cor Preferida</th>
+        </tr>
+        {% for resultado in resultados %}
+        <tr>
+            <td>{{ resultado[0] }}</td>
+            <td>{{ resultado[1] }}</td>
+            <td>{{ resultado[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <form action="/limpar" method="post">
+        <button type="submit">Limpar Dados</button>
+    </form>
+    <br>
+    <form action="/" method="get">
+        <button type="submit">Adicionar Dados</button>
+    </form>
+</body>
+</html>
+
