@@ -1,8 +1,3 @@
-Flask==2.0.3
-Werkzeug==2.0.3
-gunicorn==20.1.0  # Servidor WSGI para rodar aplicações Python
-Jinja2==3.0.3     # Template engine usada pelo Flask
-click==8.0.4      # Utilitário de linha de comando usado pelo Flask
-itsdangerous==2.0.1  # Para assinaturas seguras em Flask
-MarkupSafe==2.0.1  # Para manipulação de strings seguras no HTML
+Flask==2.1.0
+Werkzeug==2.1.0
 
